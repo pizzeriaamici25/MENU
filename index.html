@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza Amici – Tetovë</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--brand:#b11226;
+--brand-dark:#7a0b1a;
+--gold:#d4af37;
+--cream:#fff8f1;
+--bg:#f3eee8;
+--card:#ffffff;
+--text:#2b1b14;
+--muted:#8a7a6e;
+--radius:18px;
+--shadow:0 18px 60px rgba(0,0,0,.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:Inter,system-ui,-apple-system;
+background:
+radial-gradient(circle at top, rgba(255,255,255,.6), transparent),
+linear-gradient(180deg,#efe6dc,#f7f2ec);
+padding:20px;
+color:var(--text);
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+background:white;
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+overflow:hidden;
+}
+
+/* HERO */
+header{
+position:relative;
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url("https://images.unsplash.com/photo-1601924582975-7e3b4f91c76d?auto=format&fit=crop&w=1500&q=80");
+background-size:cover;
+background-position:center;
+color:white;
+padding:120px 30px;
+text-align:center;
+}
+
+header h1{
+font-size:3.8rem;
+font-weight:900;
+letter-spacing:4px;
+text-transform:uppercase;
+text-shadow:0 10px 40px rgba(0,0,0,.7);
+}
+
+.subtitle{
+margin-top:12px;
+font-size:1.1rem;
+letter-spacing:4px;
+text-transform:uppercase;
+color:#f8e9c8;
+}
+
+/* Italian Ribbon */
+.ribbon{
+position:absolute;
+top:0;
+right:0;
+width:140px;
+height:140px;
+overflow:hidden;
+}
+
+.ribbon span{
+position:absolute;
+top:28px;
+right:-32px;
+transform:rotate(45deg);
+width:220px;
+background:linear-gradient(90deg,#008c45,#ffffff,#cd212a);
+color:#000;
+font-weight:900;
+text-align:center;
+padding:8px 0;
+font-size:.7rem;
+letter-spacing:2px;
+box-shadow:0 6px 20px rgba(0,0,0,.3);
+}
+
+/* SECTIONS */
+.menu-section{padding:50px;}
+
+.section-title{
+font-size:2rem;
+font-weight:900;
+color:var(--brand);
+margin-bottom:40px;
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.section-title:after{
+content:"";
+flex:1;
+height:3px;
+background:linear-gradient(to right,var(--brand),var(--gold),transparent);
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:28px;
+}
+
+/* CARDS */
+.menu-item{
+background:linear-gradient(180deg,#fff,#faf7f3);
+padding:24px;
+border-radius:16px;
+border:1px solid rgba(0,0,0,.05);
+box-shadow:0 10px 40px rgba(0,0,0,.08);
+transition:.4s cubic-bezier(.2,.8,.2,1);
+position:relative;
+overflow:hidden;
+}
+
+.menu-item::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(120deg,transparent,rgba(212,175,55,.12),transparent);
+opacity:0;
+transition:.4s;
+}
+
+.menu-item::after{
+content:"";
+position:absolute;
+top:-100%;
+left:-100%;
+width:200%;
+height:200%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);
+transition:.8s;
+}
+
+.menu-item:hover::before{opacity:1;}
+.menu-item:hover::after{top:0;left:0;}
+
+.menu-item:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 35px 90px rgba(0,0,0,.18);
+}
+
+.item-header{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+}
+
+.item-name{
+font-family:'Playfair Display',serif;
+font-weight:700;
+font-size:1.2rem;
+letter-spacing:.5px;
+}
+
+.item-price{
+font-weight:900;
+color:var(--brand);
+font-size:1.3rem;
+text-align:right;
+}
+
+.item-price::after{
+content:"";
+display:block;
+width:40px;
+height:3px;
+background:var(--gold);
+margin-top:6px;
+}
+
+.menu-item:hover .item-price{
+color:var(--gold);
+text-shadow:0 0 12px rgba(212,175,55,.8);
+}
+
+.item-ingredients{
+margin-top:10px;
+color:var(--muted);
+font-size:.95rem;
+line-height:1.6;
+}
+
+/* Floating animation */
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0);}
+}
+
+.menu-item:nth-child(odd){animation:float 6s ease-in-out infinite;}
+.menu-item:nth-child(even){animation:float 8s ease-in-out infinite;}
+
+/* DRINKS */
+.drinks-section{
+background:
+linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+url();
+background-size:cover;
+background-position:center;
+padding:60px;
+margin:40px;
+border-radius:var(--radius);
+color:white;
+box-shadow:var(--shadow);
+}
+
+.drink-item{
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.25);
+padding:18px 22px;
+margin-bottom:16px;
+border-radius:14px;
+display:flex;
+justify-content:space-between;
+font-weight:700;
+transition:.3s;
+}
+
+.drink-item:hover{
+background:rgba(255,255,255,.25);
+transform:scale(1.05);
+box-shadow:0 10px 40px rgba(0,0,0,.6);
+}
+
+/* MAP */
+.map-container{
+margin:60px;
+border-radius:24px;
+overflow:hidden;
+box-shadow:0 30px 80px rgba(0,0,0,.25);
+border:6px solid white;
+position:relative;
+}
+
+.map-container::after{
+content:"";
+position:absolute;
+inset:0;
+border-radius:24px;
+box-shadow:0 0 60px rgba(212,175,55,.5);
+pointer-events:none;
+}
+
+/* FOOTER */
+footer{
+background:
+linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85)),
+url("https://images.unsplash.com/photo-1546549039-0a2e93b93aa5?auto=format&fit=crop&w=1500&q=80");
+background-size:cover;
+background-position:center;
+color:#f8e9c8;
+text-align:center;
+padding:80px 20px;
+letter-spacing:2px;
+text-transform:uppercase;
+}
+
+@media(max-width:768px){
+header h1{font-size:2.5rem;}
+.menu-section{padding:30px;}
+}
+
+.phone{
+display:inline-block;
+margin-top:25px;
+padding:14px 36px;
+background:linear-gradient(135deg,#b11226,#ff4d4d);
+color:white;
+font-weight:800;
+letter-spacing:2px;
+text-decoration:none;
+border-radius:50px;
+box-shadow:0 12px 40px rgba(177,18,38,.6);
+transition:.3s;
+font-size:1rem;
+}
+
+.phone:hover{
+transform:translateY(-4px) scale(1.05);
+box-shadow:0 20px 60px rgba(177,18,38,.8);
+background:linear-gradient(135deg,#ff4d4d,#b11226);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<h1>Pizza Amici</h1>
+<p class="subtitle">Tetovë – Pica më e mirë në qytet</p>
+<a href="tel:+38970932666" class="phone">
+    📞 +389 70 932 666
+</a>    
+</header>
+
+
+<div class="menu-section">
+
+<h2 class="section-title">🍕 Pica</h2>
+
+<div class="menu-grid">
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza Margarita</span><span class="item-price">190 ден</span></div>
+<div class="item-ingredients">Sos domatesh, kashkavall</div>
+</div>
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza Përshut</span><span class="item-price">260 ден</span></div>
+<div class="item-ingredients">Sos domatesh, kashkavall, proshutë</div>
+</div>
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza Vegetaria</span><span class="item-price">240 ден</span></div>
+<div class="item-ingredients">Sos Domatesh , Perime, kashkavall, ullinj</div>
+</div>
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza Capricosa</span><span class="item-price">280 ден</span></div>
+<div class="item-ingredients">Sos domatesh, kashkavall, proshutë, kerpurdha</div>
+</div>
+
+
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza me Tuna</span><span class="item-price">280 ден</span></div>
+<div class="item-ingredients">Sos domatesh, kashkavall, tuna</div>
+</div>
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza Fungi</span><span class="item-price">220 ден</span></div>
+<div class="item-ingredients">Sos domatesh, kashkavall, kerpurdha</div>
+</div>
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza Sallami</span><span class="item-price">220 ден</span></div>
+<div class="item-ingredients">Sos domatesh, kashkavall, Sallame</div>
+</div>
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza Suxhuk</span><span class="item-price">250 ден</span></div>
+<div class="item-ingredients">Sos Domatesh, Kashkavall , suxhuk</div>
+</div>
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza Amici</span><span class="item-price">300 ден</span></div>
+<div class="item-ingredients">Sos Domatesh , Kashkavall , Proshutë, kerpurdha, sallam, suxhuk</div>
+</div>
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza Katër Djathrat</span><span class="item-price">300 ден</span></div>
+<div class="item-ingredients">Sos Domatesh , Kashkavall , Mozzarella, parmesan, gorgonzola</div>
+</div>
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza Rucola</span><span class="item-price">270 ден</span></div>
+<div class="item-ingredients">Sos Domatesh, Kashkavall , Rucola, domate cherry, parmesan</div>
+</div>
+
+<div class="menu-item">
+<div class="item-header"><span class="item-name">Pizza Përshut Rucola</span><span class="item-price">320 ден</span></div>
+<div class="item-ingredients">Sos Domatesh, Kashkavall , Proshutë, rucola, parmesan</div>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="drinks-section">
+<h2 class="section-title">🥤 Pije</h2>
+<div class="drink-item"><span>Coca Cola</span><span>60 ден</span></div>
+<div class="drink-item"><span>Fanta</span><span>60 ден</span></div>
+<div class="drink-item"><span>Schweppes</span><span>60 ден</span></div>
+<div class="drink-item"><span>Ujë Natyral</span><span>40 ден</span></div>
+<div class="drink-item"><span>Ujë me Gaz</span><span>40 ден</span></div>
+</div>
+
+
+<!-- GOOGLE MAPS -->
+
+<div class="map-container">
+<iframe 
+src="https://www.google.com/maps?q=Pizzeria%20Amici%20Tetove%20Rruga%20Trimave&output=embed"
+width="100%" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+
+<footer>
+<p>Pizza Amici · Tetovë</p>
+</footer>
+
+</div>
+
+</body>
+</html>
